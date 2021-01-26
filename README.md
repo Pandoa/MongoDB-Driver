@@ -13,6 +13,16 @@
 
 # 1. Creating a Connector
 ## 1.1. Client
+To create a client, use the `CreateClient` node:
+
+![Blueprint Create Client Example](https://github.com/Pandoa/MongoDB-Driver/blob/main/Image/CreateClient.png?raw=true)
+
+The parameters of this node are the following:
+- `Protocole`: should be either `mongodb` or `mongodb+server`.
+- `Address`: The address of your MongoDB database.
+- `Port`: The port your MongoDB database is on.
+- `AdditionalParameters`: Parameters added at the end of the URI. For example `a=b&c=d`.
+
 ## 1.2. Pool
 # 2. Getting Data
 # 3. Updating Data
