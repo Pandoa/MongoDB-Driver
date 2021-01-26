@@ -92,4 +92,4 @@ To get data, you can use either `Find` to get several entries or `FindOne` to ge
 # 3. Updating Data
 # 4. Finding Data
 # 5. Support
-
+If you need help, have a feature request or experience troubles, please contact us at [pandores.marketplace@gmail.com](mailto:pandores.marketplace+FirebaseFeatures@gmail.com?subject=Firebase%20Features%20-%20).
