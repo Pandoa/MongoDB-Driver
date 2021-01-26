@@ -90,6 +90,10 @@ To get data, you can use either `Find` to get several entries or `FindOne` to ge
 |:warning:|The `Failed` exec is not executed when the document wasn't found but only if an error occured.|
 |:---:|:---|
 # 3. Updating Data
+To update existing data, you can use `UpdateOne` or `UpdateMany` depending on how many documents you want to update.
+The `UpdateOne` node is used as followed:
+
+![Update One Example](https://github.com/Pandoa/MongoDB-Driver/blob/main/Image/UpdateOne.png?raw=true)
 # 4. Finding Data
 # 5. Support
 If you need help, have a feature request or experience troubles, please contact us at [pandores.marketplace@gmail.com](mailto:pandores.marketplace+MongoDBDriver@gmail.com?subject=MongoDBDriver%20-%20).
