@@ -43,7 +43,7 @@ The parameters of this node are the following:
 To get data, you can use either `Find` to get several entries or `FindOne` to get a single document.
 
 ![FindOne example](https://github.com/Pandoa/MongoDB-Driver/blob/main/Image/FindOne.png?raw=true)
-|:warning:|Failed is not executed when the document wasn't found but only if an error happened.|
+|:warning:|The `Failed` exec is not executed when the document wasn't found but only if an error occured.|
 |:---:|:---|
 # 3. Updating Data
 # 4. Finding Data
