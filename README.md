@@ -24,6 +24,7 @@ The parameters of this node are the following:
 - `AdditionalParameters`: Parameters added at the end of the URI. For example `a=b&c=d`.
 
 ## 1.2. Pool
+![Blueprint Create Pool Example](https://github.com/Pandoa/MongoDB-Driver/blob/main/Image/CreatePool.png?raw=true)
 # 2. Getting Data
 # 3. Updating Data
 # 4. Finding Data
