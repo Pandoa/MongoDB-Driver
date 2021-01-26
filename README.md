@@ -21,10 +21,24 @@ The parameters of this node are the following:
 - `Protocole`: should be either `mongodb` or `mongodb+server`.
 - `Address`: The address of your MongoDB database.
 - `Port`: The port your MongoDB database is on.
-- `AdditionalParameters`: Parameters added at the end of the URI. For example `a=b&c=d`.
+- `Additional Parameters`: Parameters added at the end of the URI. For example `a=b&c=d`.
 
 ## 1.2. Pool
+To create a pool, use the `CreatePool` node:
+
 ![Blueprint Create Pool Example](https://github.com/Pandoa/MongoDB-Driver/blob/main/Image/CreatePool.png?raw=true)
+
+The parameters of this node are the following:
+- `Protocole`: should be either `mongodb` or `mongodb+server`.
+- `Address`: The address of your MongoDB database.
+- `Port`: The port your MongoDB database is on.
+- `Min Pool Size`: The minimum size of the pool (i.e. the number of clients when there is no task in the pool).
+- `Max Pool Size`: The maximum size of the pool (i.e. the number of clients when the pool is busy).
+- `Additional Parameters`: Parameters added at the end of the URI. For example `a=b&c=d`.
+
+|:information_source:| It is recommended to use a pool instead of a client. |
+|:---:|:---|
+
 # 2. Getting Data
 # 3. Updating Data
 # 4. Finding Data
