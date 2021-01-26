@@ -23,7 +23,7 @@ All Blueprints methods taking time to complete have several output execution pin
 ### 0.2.1. Setup
 If you plan to use MongoDB-Driver with C++, add the following line to your `MyGame.Build.cs`:
 ```csharp
-PublicDependencyModuleNames.Add("MongoDB-Driver");
+PublicDependencyModuleNames.Add("MongoDBDriver");
 ```
 You can then includes the C++ files in your project:
 ```cpp
