@@ -11,7 +11,7 @@
   1.2. [Pool](#12-pool)
 2. [Getting Data](#2-getting-data)
 3. [Updating Data](#3-updating-data)
-4. [Finding Data](#4-finding-data)
+4. [Other Functionalities](#4-other-functionalities)
 5. [Support](#5-support)
 
 # 0. Introduction
@@ -94,6 +94,33 @@ To update existing data, you can use `UpdateOne` or `UpdateMany` depending on ho
 The `UpdateOne` node is used as followed:
 
 ![Update One Example](https://github.com/Pandoa/MongoDB-Driver/blob/main/Image/UpdateOne.png?raw=true)
-# 4. Finding Data
+# 4. Other Functionalities
+The following nodes are available as well:
+- `ListDatabases`: Lists all databases.
+- `DropDatabase`: Drops the specified database.
+- `CreateCollection`: Creates a new collection on the specified database.
+- `DropCollection`: Drops a collection in the specified database.
+- `InsertOne`: Insert a document into the collection.
+- `InsertMany`: Insert many documents into the collection.
+- `ListIndexes`: Lists the indexes in the collection.
+- `RenameCollection`: Rename a collection.
+- `ReplaceOne`: Replaces a single document matching the provided filter in the specified collection.
+- `UpdateMany`: Updates multiple documents matching the provided filter in the specified collection.
+- `UpdateOne`: Updates a single document matching the provided filter in the specified collection.
+- `CountDocuments`: Counts the number of documents matching the criteria.
+- `GetEstimatedDocumentCount`: Get the estimated count of documents in the collection. 
+- `CreateIndex`: Creates an index over the collection for the provided keys with the provided options.
+- `DeleteMany`: Deletes all matching documents from the collection.
+- `DeleteOne`: Deletes a matching document from the collection.
+- `Find`: Finds the documents in the collection which match the provided filter.
+- `FindOne`: Finds the document in the collection which match the provided filter.
+- `FindOneAndDelete`: Finds a single document matching the filter and deletes it.
+- `FindOneAndReplace`: Finds a single document matching the filter and replaces it.
+- `FindOneAndUpdate`: Finds a single document matching the filter and updates it.
+- `RunCommand`: Runs a command against the database.
+- `ListCollectionNames`: Lists the names of the collections in the database.
+- `Ping`: Pings the database.
+
+
 # 5. Support
 If you need help, have a feature request or experience troubles, please contact us at [pandores.marketplace@gmail.com](mailto:pandores.marketplace+MongoDBDriver@gmail.com?subject=MongoDBDriver%20-%20).
