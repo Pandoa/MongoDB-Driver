@@ -100,10 +100,10 @@ The following nodes are available as well:
 - `DropDatabase`: Drops the specified database.
 - `CreateCollection`: Creates a new collection on the specified database.
 - `DropCollection`: Drops a collection in the specified database.
-- `InsertOne`: Insert a document into the collection.
-- `InsertMany`: Insert many documents into the collection.
+- `InsertOne`: Inserts a document into the collection.
+- `InsertMany`: Inserts many documents into the collection.
 - `ListIndexes`: Lists the indexes in the collection.
-- `RenameCollection`: Rename a collection.
+- `RenameCollection`: Renames a collection.
 - `ReplaceOne`: Replaces a single document matching the provided filter in the specified collection.
 - `UpdateMany`: Updates multiple documents matching the provided filter in the specified collection.
 - `UpdateOne`: Updates a single document matching the provided filter in the specified collection.
