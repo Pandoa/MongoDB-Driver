@@ -32,7 +32,7 @@ You can then includes the C++ files in your project:
 #include "MongoDB/Client.h"            // For the UMongoClient class.
 #include "MongoDB/Pool.h"              // For the UMongoPool class.
 ```
-### 0.2.2. Use the Plugin
+### 0.2.2. Using the Plugin
 The interface for C++ is the same as for Blueprints. C++ functions have a `Callback` instead of an execution pin as parameter with a boolean indicating if the operation succeeded and the data returned by the function if any. 
 
 Here is a small example of how callbacks work:
