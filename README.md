@@ -41,6 +41,7 @@ UMongoPool* const Pool = UMongoPool::CreatePool(TEXT("mongodb"), TEXT("127.0.0.1
 
 if (Pool) // Pool creation fails if the URL is ill-formed.
 {
+    // With a lambda
     Pool->Ping(FMongoCallback::CreateLambda([](bool bSuccess) -> void 
     {
         if (bSuccess)
@@ -52,6 +53,9 @@ if (Pool) // Pool creation fails if the URL is ill-formed.
             // Failed to ping database.
         }
     }));
+    
+    // Or with an UObject's UFUNCTION
+    Pool->Ping(FMongoCallback::CreateUObject(this, &UMyClass::MyFunc));
 }
 ```
 
