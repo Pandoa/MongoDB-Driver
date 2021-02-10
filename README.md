@@ -1,6 +1,4 @@
 # MongoDB Driver
-|:warning:|This documentation is still in construction|
-|:---:|:----|
 
 # Table of Content
 0. [Introduction](#1-introduction)</br>
