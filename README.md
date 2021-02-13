@@ -61,6 +61,12 @@ if (Connector) // Pool creation fails if the URL is ill-formed.
 }
 ```
 
+Note that you can't expose directly `IDatabaseConnector` pointers to Blueprints. You must use the following syntaxe:
+```cpp
+UPROPERTY()
+TScriptInterface<IDatabaseConnector> Connector;
+```
+
 # 1. Creating a Connector
 ## 1.1. Client
 To create a client, use the `CreateClient` node:
