@@ -23,7 +23,7 @@ If you plan to use MongoDB-Driver with C++, add the following line to your `MyGa
 ```csharp
 PublicDependencyModuleNames.Add("MongoDBDriver");
 ```
-You can then includes the C++ files in your project:
+You can then include the C++ files in your project:
 ```cpp
 #include "MongoDB/Document.h"          // For the FDocumentValue structure.
 #include "MongoDB/DatabaseConnector.h" // For the IDatabaseConnector interface. 
