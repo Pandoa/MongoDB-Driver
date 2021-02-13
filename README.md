@@ -35,12 +35,16 @@ The interface for C++ is the same as for Blueprints. C++ functions have a `Callb
 
 Here is a small example of how callbacks work:
 ```cpp
-UMongoPool* const Pool = UMongoPool::CreatePool(TEXT("mongodb"), TEXT("127.0.0.1"), 27017, 5, 10);
+// Create a Pool.
+IDatabaseConnector* const Connector = UMongoPool::CreatePool(TEXT("mongodb"), TEXT("127.0.0.1"), 27017, 5, 10);
 
-if (Pool) // Pool creation fails if the URL is ill-formed.
+// Or a client.
+// IDatabaseConnector* const Connector = UMongoClient::CreateClient(TEXT("mongodb"), TEXT("127.0.0.1"), 27017);
+
+if (Connector) // Pool creation fails if the URL is ill-formed.
 {
     // With a lambda
-    Pool->Ping(FMongoCallback::CreateLambda([](bool bSuccess) -> void 
+    Connector->Ping(FMongoCallback::CreateLambda([](bool bSuccess) -> void 
     {
         if (bSuccess)
         {
@@ -53,7 +57,7 @@ if (Pool) // Pool creation fails if the URL is ill-formed.
     }));
     
     // Or with an UObject's UFUNCTION
-    Pool->Ping(FMongoCallback::CreateUObject(this, &UMyClass::MyFunc));
+    Connector->Ping(FMongoCallback::CreateUObject(this, &UMyClass::MyFunc));
 }
 ```
 
