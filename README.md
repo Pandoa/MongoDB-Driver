@@ -61,7 +61,7 @@ if (Connector) // Pool creation fails if the URL is ill-formed.
 }
 ```
 
-Note that you can't expose directly `IDatabaseConnector` pointers to Blueprints. You must use the following syntaxe:
+Note that you can't expose directly `IDatabaseConnector` pointers to Blueprints. You must use the following syntax:
 ```cpp
 UPROPERTY()
 TScriptInterface<IDatabaseConnector> Connector;
