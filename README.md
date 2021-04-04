@@ -96,6 +96,9 @@ The parameters of this node are the following:
 |:information_source:| It is recommended to use a pool instead of a client. |
 |:---:|:---|
 
+|:information_source:| If you want to connect to Atlas, you can use the `CreatePoolForAtlas` node. If you want to directly use a custom URI, the `CreatePoolFromURI` node can be used. |
+|:---:|:---|
+
 # 2. Getting Data
 To get data, you can use either `Find` to get several entries or `FindOne` to get a single document.
 
