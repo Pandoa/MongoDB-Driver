@@ -97,7 +97,7 @@ The parameters of this node are the following:
 |:---:|:---|
 
 |:information_source:| If you want to connect to Atlas, you can use the `CreatePoolForAtlas` node. If you want to directly use a custom URI, the `CreatePoolFromURI` node can be used. |
-|:---:|:---|
+|:---:|:---
 
 # 2. Getting Data
 To get data, you can use either `Find` to get several entries or `FindOne` to get a single document.
@@ -105,6 +105,10 @@ To get data, you can use either `Find` to get several entries or `FindOne` to ge
 ![FindOne example](https://github.com/Pandoa/MongoDB-Driver/blob/main/Image/FindOne.png?raw=true)
 |:warning:|The `Failed` exec is not executed when the document wasn't found but only if an error occured.|
 |:---:|:---|
+
+|:information_source:| To know exactly what is returned, you can call the `ToJson` node to convert a Document Value to JSON. You can then print it to see exatly what it contains. |
+|:---:|:---|
+
 # 3. Updating Data
 To update existing data, you can use `UpdateOne` or `UpdateMany` depending on how many documents you want to update.
 The `UpdateOne` node is used as followed:
