@@ -144,7 +144,12 @@ The following nodes are available as well:
 # 5. Troubleshoting
 If you have a problem, the first thing to do is check the output log. Each time the `Failed` pin is fired, a meaningful message with a reason is printed to the logs.
 ## 5.1. Error `No suitable servers found`
-This error means there was no server where your URI points to. The reason is most likely an invalid URI. Make sure the URI you are using allows you to connect from the device where you run the Engine.
+This error means there was no server where your URI points to. The reason is most likely an invalid URI. Make sure the URI you are using allows you to connect from the device where you run the Engine, you can test it in MongoDB compass.
+## 5.2. Error `TLS handshake failed`
+This error happens if you are using SSL/TLS for your connection and the client doesn't trust the server.
+
+To solve this issue, download a pem file containing your certificate issuer and the pass it to the `Pem File` parameter of the `CreatePoolFromURI` node.
+![SSL options](https://github.com/Pandoa/MongoDB-Driver/blob/main/Image/SSL_Options.png?raw=true)
 
 # 6. Support
 If you need help, have a feature request or experience troubles, please contact us at [pandores.marketplace@gmail.com](mailto:pandores.marketplace+MongoDBDriver@gmail.com?subject=MongoDBDriver%20-%20).
