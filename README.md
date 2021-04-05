@@ -148,8 +148,10 @@ This error means there was no server where your URI points to. The reason is mos
 ## 5.2. Error `TLS handshake failed`
 This error happens if you are using SSL/TLS for your connection and the client doesn't trust the server.
 
-To solve this issue, download a pem file containing your certificate issuer and the pass it to the `Pem File` parameter of the `CreatePoolFromURI` node.  
+To solve this issue, download a pem file containing your certificate issuer and then pass it to the `Pem File` parameter of the `CreatePoolFromURI` node.  
+
 ![SSL options](https://github.com/Pandoa/MongoDB-Driver/blob/main/Image/SSL_Options.png?raw=true)
+
 
 # 6. Support
 If you need help, have a feature request or experience troubles, please contact us at [pandores.marketplace@gmail.com](mailto:pandores.marketplace+MongoDBDriver@gmail.com?subject=MongoDBDriver%20-%20).
