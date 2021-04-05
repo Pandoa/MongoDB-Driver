@@ -97,7 +97,10 @@ The parameters of this node are the following:
 |:---:|:---|
 
 |:information_source:| If you want to connect to Atlas, you can use the `CreatePoolForAtlas` node. If you want to directly use a custom URI, the `CreatePoolFromURI` node can be used. |
-|:---:|:---
+|:---:|:---|
+
+|:information_source:| You can check the Output Log to see the URI used to connect. If the printed URI doesn't match the one you want, you can use the `CreatePoolFromURI` to have full control over it. |
+|:---:|:---|
 
 # 2. Getting Data
 To get data, you can use either `Find` to get several entries or `FindOne` to get a single document.
