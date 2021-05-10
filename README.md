@@ -46,35 +46,35 @@ void UMyClass::PingDatabase()
 
   if (Connector) // Pool creation fails if the URL is ill-formed.
   {
-    // With a lambda
-    Connector->Ping(TEXT("MyDb"), FMongoCallback::CreateLambda([](bool bSuccess) -> void 
-    {
-        if (bSuccess)
-        {
-            // Database responded to our ping !
-        }
-        else 
-        {
-            // Failed to ping database.
-        }
-    }));
+      // With a lambda
+      Connector->Ping(TEXT("MyDb"), FMongoCallback::CreateLambda([](bool bSuccess) -> void 
+      {
+          if (bSuccess)
+          {
+              // Database responded to our ping !
+          }
+          else 
+          {
+              // Failed to ping database.
+          }
+      }));
     
-    // Or with an UObject's UFUNCTION
-    Connector->Ping(TEXT("MyDb"), FMongoCallback::CreateUObject(this, &UMyClass::MyFunc));
-  }
+      // Or with an UObject's UFUNCTION
+      Connector->Ping(TEXT("MyDb"), FMongoCallback::CreateUObject(this, &UMyClass::MyFunc));
+    }
 }
 
 // The function previously bound to the delegate.
 void UMyClass::MyFunc(bool bPingSuccess)
 {
-  if (bPingSuccess)
-  {
-    // Pinged successfully.
-  }
-  else
-  {
-    // An error occured.
-  }
+    if (bPingSuccess)
+    {
+        // Pinged successfully.
+    }
+    else
+    {
+        // An error occured.
+    }
 }
 ```
 
