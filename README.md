@@ -45,7 +45,7 @@ IDatabaseConnector* const Connector = UMongoPool::CreatePool(TEXT("mongodb"), TE
 if (Connector) // Pool creation fails if the URL is ill-formed.
 {
     // With a lambda
-    Connector->Ping(FMongoCallback::CreateLambda([](bool bSuccess) -> void 
+    Connector->Ping(TEXT("MyDb"), FMongoCallback::CreateLambda([](bool bSuccess) -> void 
     {
         if (bSuccess)
         {
@@ -58,7 +58,7 @@ if (Connector) // Pool creation fails if the URL is ill-formed.
     }));
     
     // Or with an UObject's UFUNCTION
-    Connector->Ping(FMongoCallback::CreateUObject(this, &UMyClass::MyFunc));
+    Connector->Ping(TEXT("MyDb"), FMongoCallback::CreateUObject(this, &UMyClass::MyFunc));
 }
 ```
 
@@ -117,6 +117,10 @@ To update existing data, you can use `UpdateOne` or `UpdateMany` depending on ho
 The `UpdateOne` node is used as followed:
 
 ![Update One Example](https://github.com/Pandoa/MongoDB-Driver/blob/main/Image/UpdateOne.png?raw=true)
+
+|:information_source:| [This page](https://docs.mongodb.com/manual/reference/operator/update/positional/) contains useful information as to how to build update queries. |
+|:---:|:-----|
+
 # 4. Other Functionalities
 The following nodes are available as well:
 - `ListDatabases`: Lists all databases.
