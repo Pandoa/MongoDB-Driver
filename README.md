@@ -36,14 +36,16 @@ The interface for C++ is the same as for Blueprints. C++ functions have a `Callb
 
 Here is a small example of how callbacks work:
 ```cpp
-// Create a Pool.
-IDatabaseConnector* const Connector = UMongoPool::CreatePool(TEXT("mongodb"), TEXT("127.0.0.1"), 27017, 5, 10);
-
-// Or a client.
-// IDatabaseConnector* const Connector = UMongoClient::CreateClient(TEXT("mongodb"), TEXT("127.0.0.1"), 27017);
-
-if (Connector) // Pool creation fails if the URL is ill-formed.
+void UMyClass::PingDatabase()
 {
+  // Create a Pool.
+  IDatabaseConnector* const Connector = UMongoPool::CreatePool(TEXT("mongodb"), TEXT("127.0.0.1"), 27017, 5, 10);
+
+  // Or a client.
+  // IDatabaseConnector* const Connector = UMongoClient::CreateClient(TEXT("mongodb"), TEXT("127.0.0.1"), 27017);
+
+  if (Connector) // Pool creation fails if the URL is ill-formed.
+  {
     // With a lambda
     Connector->Ping(TEXT("MyDb"), FMongoCallback::CreateLambda([](bool bSuccess) -> void 
     {
@@ -59,6 +61,20 @@ if (Connector) // Pool creation fails if the URL is ill-formed.
     
     // Or with an UObject's UFUNCTION
     Connector->Ping(TEXT("MyDb"), FMongoCallback::CreateUObject(this, &UMyClass::MyFunc));
+  }
+}
+
+// The function previously bound to the delegate.
+void UMyClass::MyFunc(bool bPingSuccess)
+{
+  if (bPingSuccess)
+  {
+    // Pinged successfully.
+  }
+  else
+  {
+    // An error occured.
+  }
 }
 ```
 
