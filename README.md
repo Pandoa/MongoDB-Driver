@@ -118,7 +118,7 @@ The `UpdateOne` node is used as followed:
 
 ![Update One Example](https://github.com/Pandoa/MongoDB-Driver/blob/main/Image/UpdateOne.png?raw=true)
 
-|:information_source:| [This page](https://docs.mongodb.com/manual/reference/operator/update/positional/) contains useful information as to how to build update queries. |
+|:information_source:| [This page](https://docs.mongodb.com/manual/reference/operator/update/) contains useful information as to how to build update queries. |
 |:---:|:-----|
 
 # 4. Other Functionalities
