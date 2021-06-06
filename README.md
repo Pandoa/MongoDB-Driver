@@ -166,6 +166,23 @@ The following nodes are available as well:
 - `Ping`: Pings the database.
 
 # 5. C++ examples
+## 5.1. FindOne
+```cpp
+TMap<FString, FDocumentValue> Filter;
+Filter.Add(TEXT("id"), 127);
+
+Connector->FindOne(TEXT("MyDb"), TEXT("MyCollection"), MoveTemp(Filter), FMongoDocumentCallback::CreateLambda([](bool bSuccess, const FDocumentValue& Value) -> void
+{
+    if (bSuccess)
+    {
+        // The operation succeeded, it doesn't mean something was found though.
+    }
+    else
+    {
+        // An error occured. Check the output log.
+    }
+}));
+```
 
 # 6. Troubleshoting
 If you have a problem, the first thing to do is check the output log. Each time the `Failed` pin is fired, a meaningful message with a reason is printed to the logs.
