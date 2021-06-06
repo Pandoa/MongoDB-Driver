@@ -10,8 +10,9 @@
 2. [Getting Data](#2-getting-data)
 3. [Updating Data](#3-updating-data)
 4. [Other Functionalities](#4-other-functionalities)
-5. [Troubleshoting](#5-troubleshoting)
-6. [Support](#5-support)
+5. [C++ examples](#5-c-examples)
+6. [Troubleshoting](#6-troubleshoting)
+7. [Support](#7-support)
 
 # 0. Introduction
 ## 0.1. Blueprints
@@ -164,11 +165,13 @@ The following nodes are available as well:
 - `ListCollectionNames`: Lists the names of the collections in the database.
 - `Ping`: Pings the database.
 
-# 5. Troubleshoting
+# 5. C++ examples
+
+# 6. Troubleshoting
 If you have a problem, the first thing to do is check the output log. Each time the `Failed` pin is fired, a meaningful message with a reason is printed to the logs.
-## 5.1. Error `No suitable servers found`
+## 6.1. Error `No suitable servers found`
 This error means there was no server where your URI points to. The reason is most likely an invalid URI. Make sure the URI you are using allows you to connect from the device where you run the Engine, you can test it in MongoDB compass.
-## 5.2. Error `TLS handshake failed`
+## 6.2. Error `TLS handshake failed`
 This error happens if you are using SSL/TLS for your connection and the client doesn't trust the server.
 
 To solve this issue, download a pem file containing your certificate issuer and then pass it to the `Pem File` parameter of the `CreatePoolFromURI` node.  
@@ -176,5 +179,5 @@ To solve this issue, download a pem file containing your certificate issuer and 
 ![SSL options](https://github.com/Pandoa/MongoDB-Driver/blob/main/Image/SSL_Options.png?raw=true)
 
 
-# 6. Support
+# 7. Support
 If you need help, have a feature request or experience troubles, please contact us at [pandores.marketplace@gmail.com](mailto:pandores.marketplace+MongoDBDriver@gmail.com?subject=MongoDBDriver%20-%20).
