@@ -1,91 +1,22 @@
 # [MongoDB Driver](https://www.unrealengine.com/marketplace/en-US/product/mongodb-driver)
 ![MongoDB Driver features](https://cdn1.epicgames.com/ue/product/Screenshot/Slide2.PNG-1920x1080-43c0f67bd6e661c8ebb0ba6c791e1605.jpg)
 # Table of Content
-0. [Introduction](#1-introduction)</br>
-  0.1. [Blueprints](#01-blueprints)</br>
-  0.2. [C++](#02-c)
 1. [Creating a Connector](#1-creating-a-connector)</br>
-  1.1. [Client](#11-client)</br>
-  1.2. [Pool](#12-pool)
+  1.1. [Pool](#11-pool)
 2. [Getting Data](#2-getting-data)
 3. [Updating Data](#3-updating-data)
 4. [Other Functionalities](#4-other-functionalities)
-5. [C++ examples](#5-c-examples)
-6. [Troubleshoting](#6-troubleshoting)
-7. [Support](#7-support)
-
-# 0. Introduction
-## 0.1. Blueprints
-The interface for Blueprints is the same as C++. You can also seemlessly mix both as the classes and structs are the same for both.
-
-All Blueprints methods taking time to complete have several output execution pins instead of bindable delegates as it is easier to use.
-## 0.2. C++
-### 0.2.1. Setup
-If you plan to use MongoDB-Driver with C++, add the following line to your `MyGame.Build.cs`:
-```csharp
-PublicDependencyModuleNames.Add("MongoDBDriver");
-```
-You can then include the C++ files in your project:
-```cpp
-#include "MongoDB/Document.h"          // For the FDocumentValue structure.
-#include "MongoDB/DatabaseConnector.h" // For the IDatabaseConnector interface. 
-#include "MongoDB/Client.h"            // For the UMongoClient class.
-#include "MongoDB/Pool.h"              // For the UMongoPool class.
-```
-### 0.2.2. Using the Plugin
-The interface for C++ is the same as for Blueprints. C++ functions have a `Callback` instead of an execution pin as parameter with a boolean indicating if the operation succeeded and the data returned by the function if any. 
-
-Here is a small example of how callbacks work:
-```cpp
-void UMyClass::PingDatabase()
-{
-  // Create a Pool.
-  IDatabaseConnector* const Connector = UMongoPool::CreatePool(TEXT("mongodb"), TEXT("127.0.0.1"), 27017, 5, 10);
-
-  // Or a client.
-  // IDatabaseConnector* const Connector = UMongoClient::CreateClient(TEXT("mongodb"), TEXT("127.0.0.1"), 27017);
-
-  if (Connector) // Pool creation fails if the URL is ill-formed.
-  {
-      // With a lambda
-      Connector->Ping(TEXT("MyDb"), FMongoCallback::CreateLambda([](bool bSuccess) -> void 
-      {
-          if (bSuccess)
-          {
-              // Database responded to our ping !
-          }
-          else 
-          {
-              // Failed to ping database.
-          }
-      }));
-    
-      // Or with an UObject's UFUNCTION
-      Connector->Ping(TEXT("MyDb"), FMongoCallback::CreateUObject(this, &UMyClass::MyFunc));
-    }
-}
-
-// The function previously bound to the delegate.
-void UMyClass::MyFunc(bool bPingSuccess)
-{
-    if (bPingSuccess)
-    {
-        // Pinged successfully.
-    }
-    else
-    {
-        // An error occured.
-    }
-}
-```
-
-Note that you can't expose directly `IDatabaseConnector` pointers to Blueprints. You must use the following syntax:
-```cpp
-UPROPERTY()
-TScriptInterface<IDatabaseConnector> Connector;
-```
+5. [C++ examples](#5-c-examples)</br>
+  5.1. [Setup](#51-setup)</br>
+  5.2. [Using the Plugin](52-using-the-plugin)</br>
+  5.3. [Find One Example](53-find-one-example)
+7. [Troubleshoting](#6-troubleshoting)
+8. [Support](#7-support)
 
 # 1. Creating a Connector
+We connect to MongoDB using a connector. With the connector, we can perform any operation on the database.
+
+<!--
 ## 1.1. Client
 To create a client, use the `CreateClient` node:
 
@@ -96,18 +27,24 @@ The parameters of this node are the following:
 - `Address`: The address of your MongoDB database.
 - `Port`: The port your MongoDB database is on.
 - `Additional Parameters`: Parameters added at the end of the URI. For example `a=b&c=d`.
+-->
+## 1.1. Pool
+A pool is a group of clients. When using it as a connector, it automatically returns an available client in the list. It allows to perform requests in parallel maximizing the connection and reducing delays.
 
-## 1.2. Pool
 To create a pool, use the `CreatePool` node:
 
-![Blueprint Create Pool Example](https://github.com/Pandoa/MongoDB-Driver/blob/main/Image/CreatePool.png?raw=true)
+
+<p align="center">
+  <img src="https://github.com/Pandoa/MongoDB-Driver/blob/main/Image/CreatePool.png" alt="Blueprint Create Pool Example"/>
+</p>
+
 
 The parameters of this node are the following:
 - `Protocole`: should be either `mongodb` or `mongodb+server`.
 - `Address`: The address of your MongoDB database.
 - `Port`: The port your MongoDB database is on.
 - `Min Pool Size`: The minimum size of the pool (i.e. the number of clients when there is no task in the pool).
-- `Max Pool Size`: The maximum size of the pool (i.e. the number of clients when the pool is busy).
+- `Max Pool Size`: The maximum size of the pool (i.e. the max number of clients when the pool is busy).
 - `Additional Parameters`: Parameters added at the end of the URI. For example `a=b&c=d`.
 
 |:information_source:| It is recommended to use a pool instead of a client. |
@@ -166,7 +103,76 @@ The following nodes are available as well:
 - `Ping`: Pings the database.
 
 # 5. C++ examples
-## 5.1. FindOne
+The interface for Blueprints is the same as C++. You can also seemlessly mix both as the classes and structs are the same for both.
+
+All Blueprints methods taking time to complete have several output execution pins instead of bindable delegates as it is easier to use.
+
+### 5.1. Setup
+If you plan to use MongoDB-Driver with C++, add the following line to your `MyGame.Build.cs`:
+```csharp
+PublicDependencyModuleNames.Add("MongoDBDriver");
+```
+You can then include the C++ files in your project:
+```cpp
+#include "MongoDB/Document.h"          // For the FDocumentValue structure.
+#include "MongoDB/DatabaseConnector.h" // For the IDatabaseConnector interface. 
+#include "MongoDB/Client.h"            // For the UMongoClient class.
+#include "MongoDB/Pool.h"              // For the UMongoPool class.
+```
+### 5.2. Using the Plugin
+The interface for C++ is the same as for Blueprints. C++ functions have a `Callback` instead of an execution pin as parameter with a boolean indicating if the operation succeeded and the data returned by the function if any. 
+
+Here is a small example of how callbacks work:
+```cpp
+void UMyClass::PingDatabase()
+{
+  // Create a Pool.
+  IDatabaseConnector* const Connector = UMongoPool::CreatePool(TEXT("mongodb"), TEXT("127.0.0.1"), 27017, 5, 10);
+
+  // Or a client.
+  // IDatabaseConnector* const Connector = UMongoClient::CreateClient(TEXT("mongodb"), TEXT("127.0.0.1"), 27017);
+
+  if (Connector) // Pool creation fails if the URL is ill-formed.
+  {
+      // With a lambda
+      Connector->Ping(TEXT("MyDb"), FMongoCallback::CreateLambda([](bool bSuccess) -> void 
+      {
+          if (bSuccess)
+          {
+              // Database responded to our ping !
+          }
+          else 
+          {
+              // Failed to ping database.
+          }
+      }));
+    
+      // Or with an UObject's UFUNCTION
+      Connector->Ping(TEXT("MyDb"), FMongoCallback::CreateUObject(this, &UMyClass::MyFunc));
+    }
+}
+
+// The function previously bound to the delegate.
+void UMyClass::MyFunc(bool bPingSuccess)
+{
+    if (bPingSuccess)
+    {
+        // Pinged successfully.
+    }
+    else
+    {
+        // An error occured.
+    }
+}
+```
+
+Note that you can't expose directly `IDatabaseConnector` pointers to Blueprints. You must use the following syntax:
+```cpp
+UPROPERTY()
+TScriptInterface<IDatabaseConnector> Connector;
+```
+
+### 5.3. FindOne
 ```cpp
 TMap<FString, FDocumentValue> Filter;
 Filter.Add(TEXT("id"), 127);
